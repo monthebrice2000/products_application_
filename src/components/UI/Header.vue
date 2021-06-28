@@ -18,7 +18,48 @@
 
 <script>
     export default {
-        name: "Header"
+        name: "Header",
+        data(){
+            return{
+                navbar_active : false,
+            }
+        },
+        mounted() {
+            window.addEventListener("scroll", this.onScroll);
+        },
+        beforeDestroy() {
+            window.removeEventListener("scroll", this.onScroll)
+        },
+        computed:{
+            open_all_menu(){
+                console.log( 'open navbar');
+                return { 'active' : this.navbar_active };
+
+            },
+            add_fa_time(){
+                return { 'fa-times': this.navbar_active }
+            },
+            active_scroll_top(){
+                return { 'active': this.scroll_top };
+            }
+
+        },
+        methods: {
+            onScroll(e) {
+                console.log( e );
+                this.navbar_active = false;
+                //this.windowTop = window.top.scrollY /* or: e.target.documentElement.scrollTop */
+                if(window.scrollY > 60){
+                    this.scroll_top = true;
+                }else{
+                    this.scroll_top = false;
+                }
+            },
+            open_menu(){
+                this.navbar_active = !this.navbar_active;
+                console.log('Open menu');
+            }
+        },
     }
 </script>
 

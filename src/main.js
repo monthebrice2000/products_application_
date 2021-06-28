@@ -14,17 +14,7 @@ const app = createApp(App);
 const store = createStore({
     state(){
         return {
-            products: [
-                {
-                    id: 6,
-                    name: 'Cold Ice-cream',
-                    min_price: 5,
-                    max_price: 20,
-                    image_url: '../assets/images/p-6.jpg',
-                    description: 'description',
-                    numbers_stars: 4,
-                },
-            ]
+            products: [],
         }
     },
     getters:{
